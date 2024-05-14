@@ -3,7 +3,7 @@ using BlazorShop.Api.Entities;
 using BlazorShop.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazorShop.Api.Repositories.Implementations
+namespace BlazorShop.Api.Repositories
 {
     public class CarrinhoCompraRepository : ICarrinhoCompraRepository
     {
