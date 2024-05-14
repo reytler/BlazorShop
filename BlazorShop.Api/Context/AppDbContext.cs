@@ -318,13 +318,13 @@ namespace BlazorShop.Api.Context
             modelBuilder.Entity<Carrinho>().HasData(new Carrinho
             {
                 Id = 1,
-                UsuarioId = 1
+                UsuarioId = "1"
 
             });
             modelBuilder.Entity<Carrinho>().HasData(new Carrinho
             {
                 Id = 2,
-                UsuarioId = 2
+                UsuarioId = "2"
 
             });
         }
