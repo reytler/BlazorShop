@@ -29,7 +29,7 @@ namespace BlazorShop.Api.Repositories
                                   }).SingleOrDefaultAsync();
                 if(item is not null)
                 {
-                    var resultado = await _context.CarrinhoItens.AddAsync(item);
+                    var resultado = await _context.CarrinhoItems.AddAsync(item);
                     await _context.SaveChangesAsync();
                     return resultado.Entity;
                 }
@@ -51,7 +51,7 @@ namespace BlazorShop.Api.Repositories
         public async Task<CarrinhoItem> GetItem(int id)
         {
             return await (from carrinho in _context.Carrinhos
-                          join carrinhoItem in _context.CarrinhoItens
+                          join carrinhoItem in _context.CarrinhoItems
                           on carrinho.Id equals carrinhoItem.CarrinhoId
                           where carrinhoItem.Id == id
                           select new CarrinhoItem
@@ -66,7 +66,7 @@ namespace BlazorShop.Api.Repositories
         public async Task<IEnumerable<CarrinhoItem>> GetItems(string usuarioId)
         {
             return await (from carrinho  in _context.Carrinhos
-                          join carrinhoItem in _context.CarrinhoItens
+                          join carrinhoItem in _context.CarrinhoItems
                           on carrinho.Id equals carrinhoItem.CarrinhoId
                           where carrinho.UsuarioId == usuarioId
                           select new CarrinhoItem
@@ -80,7 +80,7 @@ namespace BlazorShop.Api.Repositories
 
         private async Task<bool> CarrinhoItemJaExiste(int carrinhoId, int produtoId)
         {
-            return await _context.CarrinhoItens.AnyAsync(c => c.CarrinhoId == carrinhoId && 
+            return await _context.CarrinhoItems.AnyAsync(c => c.CarrinhoId == carrinhoId && 
                                                                 c.ProdutoId == produtoId);
         }
     }

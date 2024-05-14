@@ -10,7 +10,7 @@ namespace BlazorShop.Api.Context
         }
 
         public DbSet<Carrinho>? Carrinhos { get; set; }
-        public DbSet<CarrinhoItem>? CarrinhoItens { get; set; }
+        public DbSet<CarrinhoItem>? CarrinhoItems { get; set; }
         public DbSet<Produto>? Produtos { get; set; }
         public DbSet<Categoria>? Categorias { get; set;}
         public DbSet<Usuario>? Usuarios { get; set; }
