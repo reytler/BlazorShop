@@ -1,5 +1,6 @@
 using BlazorShop.Web;
 using BlazorShop.Web.Services;
+using BlazorShop.Web.Services.Implementations;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -14,5 +15,6 @@ builder.Services.AddScoped(sp => new HttpClient {
 });
 
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<ICarrinhoCompraService, CarrinhoCompraService>();
 
 await builder.Build().RunAsync();
