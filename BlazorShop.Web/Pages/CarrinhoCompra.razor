@@ -26,7 +26,10 @@ else
                             </div>
                             <span>Preço: <b>@item.Preco.ToString("c")</b></span>
                             <div>
-                                <button class="btn btn-danger sm">Excluir</button>
+                                <button @onclick="(()=> DeletaCarrinhoItem_Click(item.Id))" 
+                                    class="btn btn-danger sm">
+                                    <span class="oi oi-trash"></span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -70,5 +73,31 @@ else
         {
             MensagemErro = ex.Message;
         }
+    }
+
+    protected async Task DeletaCarrinhoItem_Click(int id)
+    {
+        try
+        {
+            var carrinhoItemDto = await CarrinhoCompraService.DeletaItem(id);
+
+            await RemoveCarrinhoItem(id);
+
+        }catch (Exception ex)
+        {
+            MensagemErro = ex.Message;
+        }
+
+    }
+
+    private CarrinhoItemDto GetCarrinhoItem(int id)
+    {
+        return CarrinhoCompraItens.FirstOrDefault(i => i.Id == id);
+    }
+
+    private async Task RemoveCarrinhoItem(int id)
+    {
+        var carrinhoItemDto = GetCarrinhoItem(id);
+        CarrinhoCompraItens.Remove(carrinhoItemDto);
     }
 }
